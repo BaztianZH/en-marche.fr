@@ -4,9 +4,11 @@ namespace App\AdherentMessage\Filter;
 
 use App\AdherentMessage\AdherentMessageTypeEnum;
 use App\Entity\Adherent;
+use App\Entity\AdherentMessage\Filter\LreManagerElectedRepresentativeFilter;
 use App\Exception\InvalidAdherentMessageType;
 use App\Form\AdherentMessage\AdherentZoneFilterType;
 use App\Form\AdherentMessage\CommitteeFilterType;
+use App\Form\AdherentMessage\ElectedRepresentativeFilterType;
 use App\Form\AdherentMessage\MunicipalChiefFilterType;
 use App\Form\AdherentMessage\ReferentElectedRepresentativeFilterType;
 use App\Form\AdherentMessage\ReferentFilterType;
@@ -58,6 +60,9 @@ class FilterFormFactory
 
             case AdherentMessageTypeEnum::REFERENT_ELECTED_REPRESENTATIVE:
                 return $this->formFactory->create(ReferentElectedRepresentativeFilterType::class, $data);
+
+            case AdherentMessageTypeEnum::LRE_MANAGER_ELECTED_REPRESENTATIVE:
+                return $this->formFactory->create(ElectedRepresentativeFilterType::class, $data, ['data_class' => LreManagerElectedRepresentativeFilter::class]);
 
             case AdherentMessageTypeEnum::REFERENT_INSTANCES:
                 return $this->formFactory->create(ReferentInstancesFilterType::class, $data);

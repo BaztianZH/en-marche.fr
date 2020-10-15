@@ -31,6 +31,7 @@ class ReferentElectedRepresentativeFilterType extends AbstractType
                 'data_class' => ReferentElectedRepresentativeFilter::class,
                 'single_zone' => false,
             ])
+            ->setAllowedTypes('single_zone', ['bool'])
         ;
     }
 }
